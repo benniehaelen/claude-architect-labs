@@ -7,15 +7,25 @@ ten scenario questions tied to that lab, each carrying both distractor branches 
 
 ## How to use these sets
 
-Run a set against a clock at two minutes per question. Do not look at the rationale until the clock
-is done. When you review, do not stop at the right answer: read why each real-but-losing option
-loses, because that judgment is the transferable skill. If a question takes you longer than two
-minutes, return to the underlying lab rather than memorizing the answer.
+Run a set against a clock at two minutes per question. Each answer is hidden inside a collapsible
+block, so commit to a choice before you reveal it. When you review, do not stop at the right answer:
+read why each real-but-losing option loses, because that judgment is the transferable skill. If a
+question takes you longer than two minutes, return to the underlying lab rather than memorizing the
+answer.
 
-## Contents
+## Per-lab timed sets
 
-- `scenario_questions.md`: the pooled timed questions, tagged by source lab and domain.
-- `answer_rubrics.md`: the explained answers and distractor labels for the pooled set.
+These are added as each lab is built out.
 
-Per-lab timed sets are added as each lab is built out. The v0.1 labs are scaffolded now, so this
-pool is seeded but not yet filled. See the build order in `../SPEC.md`.
+| Set | Source lab | Status |
+| --- | --- | --- |
+| `lab01_timed.md` | 01 agent-loop-observability | Available |
+| `lab02_timed.md` | 02 tool-catalog-design | Available |
+
+Sets for labs 03 through 06 arrive when those labs are built.
+
+## Pooled set
+
+`scenario_questions.md` and `answer_rubrics.md` hold an optional pooled set tagged by source lab and
+domain, for mixed-topic timed runs. The pool is seeded and fills as more labs ship. See the build
+order in `../SPEC.md`.

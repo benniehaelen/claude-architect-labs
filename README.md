@@ -70,6 +70,20 @@ git config core.hooksPath .githooks
 
 ## Status
 
-Version 0.1 in progress. The cross-cutting documents are written, the six v0.1 labs are scaffolded,
-and the lab internals (flawed versions, reference solutions, full question sets) are being built
-one lab at a time.
+Version 0.1 in progress. The cross-cutting documents are fully written, and the labs are being
+built one at a time. A built lab ships a flawed version, a reference solution, an eval, a decision
+record, a failure-mode catalog, a question set, and a timed practice set, all runnable in a free
+dry-run.
+
+| Lab | Title | Status |
+| --- | --- | --- |
+| 01 | agent-loop-observability | Built |
+| 02 | tool-catalog-design | Built |
+| 03 | mcp-boundaries | Scaffolded |
+| 04 | claude-code-team-workflow | Scaffolded |
+| 05 | structured-output-reliability | Scaffolded |
+| 06 | context-management-failure-modes | Scaffolded |
+
+Built labs pass their evals (`python shared/evals/check_lab01.py` and `check_lab02.py`). Scaffolded
+labs have their README, START_HERE, EXAM_ANGLE, and a full-skeleton DECISION_RECORD in place, ready
+to build out.
