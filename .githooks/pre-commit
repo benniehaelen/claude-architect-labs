@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+#
+# Pre-commit control for the repository house style.
+#
+# This is the commit-time counterpart to the PostToolUse hook. It blocks any commit that introduces
+# an em-dash into a staged Markdown file. The path-scoped rule in .claude/rules/house-style.md
+# guides authoring, this check governs the commit.
+#
+# Enable after cloning:  git config core.hooksPath .githooks
+
+set -euo pipefail
+
+# U+2014 EM DASH, expressed without using the character literally in this script.
+em_dash=$'—'
+status=0
+
+# Only inspect staged Markdown files that are added, copied, or modified.
+while IFS= read -r file; do
+  [ -z "$file" ] && continue
+  if git show ":$file" | grep -nF "$em_dash" >/dev/null 2>&1; then
+    echo "House-style violation: em-dash found in $file" >&2
+    git show ":$file" | grep -nF "$em_dash" | sed "s/^/  $file:/" >&2
+    status=1
+  fi
+done < <(git diff --cached --name-only --diff-filter=ACM -- '*.md')
+
+if [ "$status" -ne 0 ]; then
+  echo "" >&2
+  echo "Commit blocked. Replace each em-dash with a comma, period, parenthesis, or colon." >&2
+  echo "See .claude/rules/house-style.md and ENFORCEMENT_LAYER.md." >&2
+fi
+
+exit "$status"

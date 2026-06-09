@@ -1,0 +1,23 @@
+{
+  "name": "support_session_failure",
+  "scenario": "customer support agent during an upstream outage",
+  "task": "A customer asks for the status of order O-77 on account A-1001.",
+  "note": "The order_status tool is failing because of an upstream outage. The scripted model keeps retrying it and would then assert a confident answer it has no evidence for. The instrumented loop trips its circuit breaker before that happens and escalates. The black-box loop in bad_version swallows the failures and returns the unfounded answer.",
+  "tool_behaviors": {
+    "account_lookup": {
+      "mode": "ok",
+      "data": {"account_id": "A-1001", "status": "active", "tier": "standard"}
+    },
+    "order_status": {
+      "mode": "error",
+      "message": "upstream order service returned 503 (service unavailable)"
+    }
+  },
+  "script": [
+    {"action": "call_tool", "tool": "account_lookup", "args": {"account_id": "A-1001"}},
+    {"action": "call_tool", "tool": "order_status", "args": {"order_id": "O-77"}},
+    {"action": "call_tool", "tool": "order_status", "args": {"order_id": "O-77"}},
+    {"action": "call_tool", "tool": "order_status", "args": {"order_id": "O-77"}},
+    {"action": "final", "answer": "Your order O-77 has shipped and is on its way."}
+  ]
+}

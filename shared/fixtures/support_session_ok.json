@@ -1,0 +1,20 @@
+{
+  "name": "support_session_ok",
+  "scenario": "customer support agent",
+  "task": "A customer asks for the status of order O-77 on account A-1001.",
+  "tool_behaviors": {
+    "account_lookup": {
+      "mode": "ok",
+      "data": {"account_id": "A-1001", "status": "active", "tier": "standard"}
+    },
+    "order_status": {
+      "mode": "ok",
+      "data": {"order_id": "O-77", "state": "shipped", "carrier": "ACME", "eta_days": 2}
+    }
+  },
+  "script": [
+    {"action": "call_tool", "tool": "account_lookup", "args": {"account_id": "A-1001"}},
+    {"action": "call_tool", "tool": "order_status", "args": {"order_id": "O-77"}},
+    {"action": "final", "answer": "Order O-77 has shipped with ACME and is expected in about two days."}
+  ]
+}
