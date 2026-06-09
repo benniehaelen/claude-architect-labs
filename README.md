@@ -70,20 +70,20 @@ git config core.hooksPath .githooks
 
 ## Status
 
-Version 0.1 in progress. The cross-cutting documents are fully written, and the labs are being
-built one at a time. A built lab ships a flawed version, a reference solution, an eval, a decision
-record, a failure-mode catalog, a question set, and a timed practice set, all runnable in a free
-dry-run.
+Version 0.1 in progress.
 
-| Lab | Title | Status |
-| --- | --- | --- |
-| 01 | agent-loop-observability | Built |
-| 02 | tool-catalog-design | Built |
-| 03 | mcp-boundaries | Scaffolded |
-| 04 | claude-code-team-workflow | Scaffolded |
-| 05 | structured-output-reliability | Scaffolded |
-| 06 | context-management-failure-modes | Scaffolded |
+Built:
+- Lab 01: agent-loop-observability
+- Lab 02: tool-catalog-design
 
-Built labs pass their evals (`python shared/evals/check_lab01.py` and `check_lab02.py`). Scaffolded
-labs have their README, START_HERE, EXAM_ANGLE, and a full-skeleton DECISION_RECORD in place, ready
-to build out.
+Scaffolded:
+- Lab 03: mcp-boundaries
+- Lab 04: claude-code-team-workflow
+- Lab 05: structured-output-reliability
+- Lab 06: context-management-failure-modes
+
+The built labs include flawed versions, reference solutions, dry-run execution paths, decision
+records, failure-mode catalogs, exam-angle notes, question sets, evals, and timed practice. They
+pass their evals (`python shared/evals/check_lab01.py` and `check_lab02.py`). The scaffolded labs
+have their README, START_HERE, EXAM_ANGLE, and a full-skeleton DECISION_RECORD in place, ready to
+build out.
