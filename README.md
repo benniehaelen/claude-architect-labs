@@ -52,8 +52,8 @@ The work itself lives in two trees:
   of the exam.
 
 Shared infrastructure lives in `shared/`: a harness, mocked services, recorded fixtures, and
-evals. No lab requires paid API calls to learn. Every lab ships a dry-run mode with mocked tool
-responses and recorded fixtures, with optional live runs.
+evals. No lab requires paid API calls to learn. Every built lab ships a dry-run mode with mocked
+tool responses and recorded fixtures, with optional live runs where appropriate.
 
 ## House style and self-enforcement
 
