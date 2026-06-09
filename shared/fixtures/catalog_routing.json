@@ -1,0 +1,41 @@
+{
+  "name": "catalog_routing",
+  "note": "The shared intent vocabulary and the routing requests used against both catalogs. intents_meta maps each intent to its expected effect level, which the analyzer uses to detect coarse and mislabeled tools.",
+  "intents_meta": {
+    "order_status": "read",
+    "account_status": "read",
+    "cancel_order": "write",
+    "refund_order": "write",
+    "close_account": "destructive"
+  },
+  "requests": [
+    {
+      "id": "r1",
+      "intent": "order_status",
+      "description": "A customer asks where their order is. Benign read.",
+      "authorized": false,
+      "confirmed": false
+    },
+    {
+      "id": "r2",
+      "intent": "cancel_order",
+      "description": "An authorized agent cancels an order and confirms the action.",
+      "authorized": true,
+      "confirmed": true
+    },
+    {
+      "id": "r3",
+      "intent": "close_account",
+      "description": "A request to close an account arrives with no authorization. High impact.",
+      "authorized": false,
+      "confirmed": false
+    },
+    {
+      "id": "r4",
+      "intent": "refund_order",
+      "description": "An authorized agent starts a refund but has not confirmed it yet.",
+      "authorized": true,
+      "confirmed": false
+    }
+  ]
+}

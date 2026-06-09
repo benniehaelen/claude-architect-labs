@@ -1,0 +1,41 @@
+{
+  "name": "support_catalog_good",
+  "note": "A deliberate catalog. Each intent maps to exactly one tool, each tool has a single effect level, descriptions are precise, and every write or destructive tool is gated by the permission control. The right tool for a read is obvious, and a high-impact action cannot run without passing the gate.",
+  "tools": [
+    {
+      "name": "get_order_status",
+      "description": "Return the current status of one order. Read only.",
+      "intents": ["order_status"],
+      "effect": "read",
+      "gated": false
+    },
+    {
+      "name": "get_account_status",
+      "description": "Return the current status of one account. Read only.",
+      "intents": ["account_status"],
+      "effect": "read",
+      "gated": false
+    },
+    {
+      "name": "cancel_order",
+      "description": "Cancel one order. Requires authorization and confirmation.",
+      "intents": ["cancel_order"],
+      "effect": "write",
+      "gated": true
+    },
+    {
+      "name": "refund_order",
+      "description": "Issue a refund for one order. Requires authorization and confirmation.",
+      "intents": ["refund_order"],
+      "effect": "write",
+      "gated": true
+    },
+    {
+      "name": "close_account",
+      "description": "Permanently close one account. Requires authorization and confirmation.",
+      "intents": ["close_account"],
+      "effect": "destructive",
+      "gated": true
+    }
+  ]
+}

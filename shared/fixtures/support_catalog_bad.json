@@ -1,0 +1,34 @@
+{
+  "name": "support_catalog_bad",
+  "note": "A sprawling catalog. Intents overlap across tools, dangerous tools are ungated, and a coarse manage_order tool bundles a benign lookup with cancel and refund. The agent has no obvious choice for a read, and a destructive action can run with no authorization, no confirmation, and no escalation.",
+  "tools": [
+    {
+      "name": "manage_order",
+      "description": "Manage an order: look it up, cancel it, or issue a refund.",
+      "intents": ["order_status", "cancel_order", "refund_order"],
+      "effect": "destructive",
+      "gated": false
+    },
+    {
+      "name": "order_info",
+      "description": "Get information about an order.",
+      "intents": ["order_status"],
+      "effect": "read",
+      "gated": false
+    },
+    {
+      "name": "lookup",
+      "description": "General lookup for orders and accounts.",
+      "intents": ["order_status", "account_status"],
+      "effect": "read",
+      "gated": false
+    },
+    {
+      "name": "account_tool",
+      "description": "View an account or close it.",
+      "intents": ["account_status", "close_account"],
+      "effect": "destructive",
+      "gated": false
+    }
+  ]
+}
