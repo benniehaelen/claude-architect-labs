@@ -1,0 +1,46 @@
+{
+  "name": "mcp_server_good",
+  "note": "A scoped MCP server. It exposes only the four operations the two agents need, each at one effect level, every write or destructive operation gated, and each operation declares an output cap at or under the host limit so no single result can flood context. The right operation is reachable and a high-impact action cannot run without passing the boundary.",
+  "operations": [
+    {
+      "name": "search_docs",
+      "description": "Search the internal documentation corpus and return matching passages. Read only, capped.",
+      "kind": "tool",
+      "capability": "search_docs",
+      "effect": "read",
+      "exposed": true,
+      "gated": false,
+      "declared_result_limit": 8000
+    },
+    {
+      "name": "export_corpus",
+      "description": "Export a bounded slice of the documentation corpus. Read only, capped below the host output limit.",
+      "kind": "tool",
+      "capability": "export_corpus",
+      "effect": "read",
+      "exposed": true,
+      "gated": false,
+      "declared_result_limit": 20000
+    },
+    {
+      "name": "trigger_deploy",
+      "description": "Trigger a deployment. Requires authorization and confirmation.",
+      "kind": "tool",
+      "capability": "trigger_deploy",
+      "effect": "write",
+      "exposed": true,
+      "gated": true,
+      "declared_result_limit": 2000
+    },
+    {
+      "name": "delete_environment",
+      "description": "Permanently delete a deployment environment. Requires authorization and confirmation.",
+      "kind": "tool",
+      "capability": "delete_environment",
+      "effect": "destructive",
+      "exposed": true,
+      "gated": true,
+      "declared_result_limit": 2000
+    }
+  ]
+}

@@ -72,6 +72,45 @@ and revert file changes you need file checkpointing, not forking alone.
 
 Source: https://code.claude.com/docs/en/agent-sdk/sessions
 
+## MCP boundaries: capability model and runtime controls
+
+Verified on 2026-06-10. Lab 03 (`labs/03-mcp-boundaries`) depends on these facts. The Model Context Protocol is a
+client-server protocol. The host (Claude Code) creates one MCP client per server, and a server is a
+program that provides context to that client. A server exposes three core primitives: tools
+(executable functions the model can invoke to take actions), resources (data sources that provide
+contextual information), and prompts (reusable interaction templates). The boundary is therefore a
+trust and reliability decision: what the server exposes is what the agent can reach.
+
+Source: https://modelcontextprotocol.io/docs/concepts/architecture
+
+The two boundary controls the lab leans on are real and host-side in Claude Code.
+
+Scope restriction at the authorization layer. Setting `oauth.scopes` (a single space-separated
+string) pins the scopes Claude Code requests during the OAuth flow. The documentation calls this
+"the supported way to restrict an MCP server to a security-team-approved subset when the upstream
+authorization server advertises more scopes than you want to grant." It takes precedence over the
+scopes discovered at the well-known endpoints, and a later 403 `insufficient_scope` causes a
+re-authentication with the same pin. Separately, Claude Code prompts for approval before using a
+project-scoped server from `.mcp.json`; pending servers show as "Pending approval" and rejected ones
+as "Rejected," and choices reset with `claude mcp reset-project-choices`.
+
+Output bounding to protect context. MCP tool results are returned into the host conversation
+context, so an unbounded payload consumes context. Claude Code warns when any MCP tool output
+exceeds 10,000 tokens and enforces a default maximum of 25,000 tokens, adjustable with the
+`MAX_MCP_OUTPUT_TOKENS` environment variable.
+
+Edge: the host default is not the whole story, because the server can raise its own ceiling. The
+`MAX_MCP_OUTPUT_TOKENS` limit applies only to tools that do not declare their own limit. A server
+author can annotate a tool with `_meta["anthropic/maxResultSizeChars"]` in its `tools/list` entry,
+which Claude Code honors up to a hard ceiling of 500,000 characters, and that value governs the
+tool's text content regardless of `MAX_MCP_OUTPUT_TOKENS`. Without the annotation, an oversized
+result is persisted to disk and replaced with a file reference. So bounding what crosses the
+boundary is a shared responsibility: the host caps by default, but the exposed surface and the
+per-tool size annotations set on the server decide what can actually flood context. Neither a client
+prompt nor a tool description governs either control.
+
+Source: https://code.claude.com/docs/en/mcp
+
 ## Re-verification checklist
 
 Run this before each tagged release and update the verification date above.
@@ -81,4 +120,7 @@ Run this before each tagged release and update the verification date above.
    minimum Claude Code version that introduced the feature and any version where the bug is fixed.
 3. Confirm the citations-plus-structured-output 400 error and the current beta header value.
 4. Confirm the `fork_session` semantics and the filesystem-is-not-forked edge.
-5. Update every dated reference in the labs and question sets that depends on these facts.
+5. Confirm the MCP primitives (tools, resources, prompts), the `MAX_MCP_OUTPUT_TOKENS` default of
+   25,000 and the 10,000-token warning, the `anthropic/maxResultSizeChars` 500,000-character
+   ceiling, and the `oauth.scopes` restriction behavior.
+6. Update every dated reference in the labs and question sets that depends on these facts.
