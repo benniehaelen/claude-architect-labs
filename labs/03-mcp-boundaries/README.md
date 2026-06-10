@@ -18,5 +18,28 @@ boundary sits, and how to keep returned context bounded and safe. The lab contra
 over-exposed server against a scoped one and shows how the boundary is governed at runtime, not
 merely described.
 
-Status: scaffolded for v0.1. The flawed version, reference solution, failure-mode catalog, and
-question set are added when this lab is built out.
+## How to run (dry-run, free, deterministic)
+
+No installs and no paid API calls are needed. The boundary logic is deterministic and reads server
+specs and a request set from `../../shared/fixtures`. From the repository root:
+
+```
+python labs/03-mcp-boundaries/bad_version/run.py
+python labs/03-mcp-boundaries/solution/run.py
+python shared/evals/check_lab03.py
+```
+
+Both runners use the same boundary engine (`../../shared/harness/mcp.py`). Only the server spec
+differs. On the over-exposed server, a raw SQL tool and a secrets resource are published, the
+sensitive operations are ungated, an unauthorized environment deletion runs silently, and a bulk
+export floods the conversation context. On the scoped server, only the needed operations are
+exposed, the gate escalates the unauthorized deletion, and the export is bounded under the host
+output limit. The lesson is that a runtime control can only govern the surface and the caps the
+server places on it.
+
+## Status
+
+Built for v0.1. Includes the over-exposed server, the scoped server, the shared boundary engine
+(routing, the trust boundary, payload bounding, and the boundary analyzer), the failure-mode
+catalog, the decision record, the question set, and a timed practice set
+(`../../practice/lab03_timed.md`).

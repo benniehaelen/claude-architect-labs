@@ -21,8 +21,9 @@ These are added as each lab is built out.
 | --- | --- | --- |
 | `lab01_timed.md` | 01 agent-loop-observability | Available |
 | `lab02_timed.md` | 02 tool-catalog-design | Available |
+| `lab03_timed.md` | 03 mcp-boundaries | Available |
 
-Sets for labs 03 through 06 arrive when those labs are built.
+Sets for labs 04 through 06 arrive when those labs are built.
 
 ## Pooled set
 

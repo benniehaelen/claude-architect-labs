@@ -1,0 +1,49 @@
+{
+  "name": "mcp_boundary",
+  "note": "The shared boundary parameters and the request set used against both servers. needed_capabilities is the allowlist of operations the two agents legitimately need, which the analyzer uses to detect over-exposure. ops_meta maps each capability to the effect it actually carries, used to detect mislabeled operations. output_token_limit and warning_threshold mirror the real Claude Code MAX_MCP_OUTPUT_TOKENS default of 25000 and the 10000-token warning (see VERIFIED.md).",
+  "output_token_limit": 25000,
+  "warning_threshold": 10000,
+  "needed_capabilities": ["search_docs", "export_corpus", "trigger_deploy", "delete_environment"],
+  "ops_meta": {
+    "search_docs": "read",
+    "export_corpus": "read",
+    "trigger_deploy": "write",
+    "delete_environment": "destructive",
+    "raw_sql": "destructive",
+    "list_secrets": "read"
+  },
+  "requests": [
+    {
+      "id": "r1",
+      "capability": "search_docs",
+      "description": "An internal knowledge assistant looks up a policy document. Benign read.",
+      "authorized": false,
+      "confirmed": false,
+      "result_tokens": 1500
+    },
+    {
+      "id": "r2",
+      "capability": "trigger_deploy",
+      "description": "A CI/CD pipeline triggers a deployment with authorization and confirmation.",
+      "authorized": true,
+      "confirmed": true,
+      "result_tokens": 400
+    },
+    {
+      "id": "r3",
+      "capability": "delete_environment",
+      "description": "A request to delete a production environment arrives with no authorization. High impact.",
+      "authorized": false,
+      "confirmed": false,
+      "result_tokens": 200
+    },
+    {
+      "id": "r4",
+      "capability": "export_corpus",
+      "description": "The knowledge assistant requests a full corpus export. Large read that would return 120000 tokens unbounded.",
+      "authorized": false,
+      "confirmed": false,
+      "result_tokens": 120000
+    }
+  ]
+}

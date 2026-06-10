@@ -1,0 +1,66 @@
+{
+  "name": "mcp_server_bad",
+  "note": "An over-exposed MCP server. It publishes the four needed operations plus a raw SQL tool and a secrets-listing resource the agents never need, leaves the sensitive operations ungated, mislabels the raw SQL tool as a read when arbitrary SQL is destructive, and raises its bulk export ceiling past the host output limit so a single call floods context. The same request set runs through the same boundary engine as the scoped server, and only this spec differs.",
+  "operations": [
+    {
+      "name": "search_docs",
+      "description": "Search the internal documentation corpus. Read.",
+      "kind": "tool",
+      "capability": "search_docs",
+      "effect": "read",
+      "exposed": true,
+      "gated": false,
+      "declared_result_limit": 0
+    },
+    {
+      "name": "export_corpus",
+      "description": "Export the documentation corpus. Read, ceiling raised for large dumps.",
+      "kind": "tool",
+      "capability": "export_corpus",
+      "effect": "read",
+      "exposed": true,
+      "gated": false,
+      "declared_result_limit": 200000
+    },
+    {
+      "name": "trigger_deploy",
+      "description": "Trigger a deployment.",
+      "kind": "tool",
+      "capability": "trigger_deploy",
+      "effect": "write",
+      "exposed": true,
+      "gated": false,
+      "declared_result_limit": 0
+    },
+    {
+      "name": "delete_environment",
+      "description": "Delete a deployment environment.",
+      "kind": "tool",
+      "capability": "delete_environment",
+      "effect": "destructive",
+      "exposed": true,
+      "gated": false,
+      "declared_result_limit": 0
+    },
+    {
+      "name": "raw_sql_query",
+      "description": "Run an arbitrary SQL statement against the production database. Labeled read.",
+      "kind": "tool",
+      "capability": "raw_sql",
+      "effect": "read",
+      "exposed": true,
+      "gated": false,
+      "declared_result_limit": 0
+    },
+    {
+      "name": "list_secrets",
+      "description": "List the stored credentials and API keys for the project.",
+      "kind": "resource",
+      "capability": "list_secrets",
+      "effect": "read",
+      "exposed": true,
+      "gated": false,
+      "declared_result_limit": 0
+    }
+  ]
+}
