@@ -79,6 +79,13 @@ conversation context. The lab scopes the surface, gates the write and destructiv
 bounds every payload under the host output limit. Run with
 `python labs/03-mcp-boundaries/solution/run.py`.
 
+Lab 04, Claude Code team workflow (Claude Code Configuration and Workflows). A rules-and-memory
+configuration assumes a written convention holds, but a path-scoped rule does not load when Claude
+creates a file and memory cannot block a commit, so two must-holds silently fail. The lab layers the
+configuration so a hook governs file writes, a pre-commit check and a CI gate govern the commit, and
+preferences stay guided. Run with
+`python labs/04-claude-code-team-workflow/solution/run.py`.
+
 ## House style and self-enforcement
 
 This repository practices what it teaches. The writing rules live in `.claude/rules/house-style.md`
@@ -100,14 +107,14 @@ Built:
 - Lab 01: agent-loop-observability
 - Lab 02: tool-catalog-design
 - Lab 03: mcp-boundaries
+- Lab 04: claude-code-team-workflow
 
 Scaffolded:
-- Lab 04: claude-code-team-workflow
 - Lab 05: structured-output-reliability
 - Lab 06: context-management-failure-modes
 
 The built labs include flawed versions, reference solutions, dry-run execution paths, decision
 records, failure-mode catalogs, exam-angle notes, question sets, evals, and timed practice. They
-pass their evals (`python shared/evals/check_lab01.py`, `check_lab02.py`, and `check_lab03.py`). The
-scaffolded labs have their README, START_HERE, EXAM_ANGLE, and a full-skeleton DECISION_RECORD in
-place, ready to build out.
+pass their evals (`python shared/evals/check_lab01.py`, `check_lab02.py`, `check_lab03.py`, and
+`check_lab04.py`). The scaffolded labs have their README, START_HERE, EXAM_ANGLE, and a full-skeleton
+DECISION_RECORD in place, ready to build out.

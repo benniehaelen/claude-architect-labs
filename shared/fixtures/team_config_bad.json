@@ -1,0 +1,27 @@
+{
+  "name": "team_config_bad",
+  "note": "A rules-and-memory configuration that assumes a written convention holds. The house-style must-hold is enforced only by a path-scoped rule, so it is unenforced when Claude creates a file and merely guided when Claude edits one. The no-secrets must-hold lives only in memory, which cannot block a commit. And a preference is over-controlled with a blocking hook. The same event stream runs through the same engine as the layered configuration, and only this configuration differs.",
+  "conventions": [
+    {
+      "name": "house_style_no_em_dash",
+      "kind": "must",
+      "description": "Markdown files must not contain em-dashes.",
+      "enforced_by": ["rule"],
+      "binding_events": ["create", "edit"]
+    },
+    {
+      "name": "no_committed_secrets",
+      "kind": "must",
+      "description": "Credentials must never be committed.",
+      "enforced_by": ["memory"],
+      "binding_events": ["commit"]
+    },
+    {
+      "name": "heading_case",
+      "kind": "preference",
+      "description": "Headings should use sentence case.",
+      "enforced_by": ["hook"],
+      "binding_events": []
+    }
+  ]
+}
