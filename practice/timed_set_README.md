@@ -27,9 +27,10 @@ These are added as each lab is built out.
 | `lab06_timed.md` | 06 context-management-failure-modes | Available |
 | `lab07_timed.md` | 07 human-escalation-patterns | Available |
 | `lab08_timed.md` | 08 agent-permissions-sandboxing | Available |
+| `capstone_support_timed.md` | customer support capstone (labs 01, 02, 07) | Available |
 
-Every built lab through v0.2 ships a timed set. Larger and mixed-topic sets arrive with the v1.0
-capstones.
+Every built lab through v0.2 ships a timed set, and the first v1.0 capstone ships an integrative one.
+The capstone set is cross-lab: its questions require composing more than one lab at once.
 
 ## Pooled set
 

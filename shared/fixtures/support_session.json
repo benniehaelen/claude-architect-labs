@@ -1,0 +1,50 @@
+{
+  "name": "support_session",
+  "note": "A customer support session for the capstone. Each request carries the catalog fields (intent, authorized, confirmed) and the escalation fields (impact, in_policy, user_requested_human, must_escalate), so one request drives all three composed engines. c1 is a routine read. c2 is an authorized, confirmed high-impact write that the gate should govern, not the escalation policy. c3 is an unauthorized, out-of-policy account closure that must reach a human before any action. c4 is an explicit request for a human on an otherwise routine read.",
+  "requests": [
+    {
+      "id": "c1",
+      "intent": "order_status",
+      "impact": "low",
+      "in_policy": true,
+      "authorized": false,
+      "confirmed": false,
+      "user_requested_human": false,
+      "must_escalate": false,
+      "description": "Customer asks where their order is. Routine read."
+    },
+    {
+      "id": "c2",
+      "intent": "cancel_order",
+      "impact": "high",
+      "in_policy": true,
+      "authorized": true,
+      "confirmed": true,
+      "user_requested_human": false,
+      "must_escalate": false,
+      "description": "An authorized agent cancels an order and confirms the action."
+    },
+    {
+      "id": "c3",
+      "intent": "close_account",
+      "impact": "high",
+      "in_policy": false,
+      "authorized": false,
+      "confirmed": false,
+      "user_requested_human": false,
+      "must_escalate": true,
+      "description": "An unauthorized request to close an account. Out of policy and high impact."
+    },
+    {
+      "id": "c4",
+      "intent": "order_status",
+      "impact": "low",
+      "in_policy": true,
+      "authorized": false,
+      "confirmed": false,
+      "user_requested_human": true,
+      "must_escalate": true,
+      "description": "The customer explicitly asks to speak to a human agent."
+    }
+  ]
+}

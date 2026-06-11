@@ -1,0 +1,6 @@
+{
+  "name": "support_design_bad",
+  "catalog": "support_catalog_bad",
+  "policy": "escalation_policy_bad",
+  "observable": false
+}
