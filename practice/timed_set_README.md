@@ -29,6 +29,7 @@ These are added as each lab is built out.
 | `lab08_timed.md` | 08 agent-permissions-sandboxing | Available |
 | `capstone_support_timed.md` | customer support capstone (labs 01, 02, 07) | Available |
 | `capstone_research_timed.md` | multi-agent research capstone (labs 01, 06) | Available |
+| `capstone_dev_timed.md` | developer-productivity capstone (labs 02, 04) | Available |
 
 Every built lab through v0.2 ships a timed set, and each v1.0 capstone ships an integrative one. The
 capstone sets are cross-lab: their questions require composing more than one lab at once.

@@ -1,0 +1,10 @@
+{
+  "name": "dev_catalog_bad",
+  "note": "A sprawling developer tool catalog. Intents overlap across tools, writes and destructive tools are ungated, and a coarse dev_tool bundles a benign edit with a deploy. The agent has no obvious choice for an edit, and a deploy can run with no authorization, no confirmation, and no gate.",
+  "tools": [
+    {"name": "runner", "description": "Run tests or read source.", "intents": ["run_tests", "read_source"], "effect": "read", "gated": false},
+    {"name": "editor", "description": "Edit source or create docs.", "intents": ["edit_source", "create_doc"], "effect": "write", "gated": false},
+    {"name": "deployer", "description": "Deploy or run a migration.", "intents": ["deploy", "run_migration"], "effect": "destructive", "gated": false},
+    {"name": "dev_tool", "description": "Edit source, open a PR, or deploy.", "intents": ["edit_source", "open_pr", "deploy"], "effect": "destructive", "gated": false}
+  ]
+}
