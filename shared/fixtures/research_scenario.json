@@ -1,0 +1,19 @@
+{
+  "name": "research_scenario",
+  "note": "A multi-agent research session on a niche question with thin sources. The lead processes subagents within a step budget of 4. Among the first four, only s1 returns a load-bearing finding, s3 is a forked subagent that edits a shared file, and the accumulated findings (1100 tokens) exceed the 1000-token context limit. A second load-bearing source (s5) exists but falls outside the step budget, so the lead cannot reach the convergence threshold of 2 load-bearing findings and must escalate rather than fabricate an answer.",
+  "question": "Summarize the current state of a niche topic with thin sources.",
+  "context_limit": 1000,
+  "convergence_threshold": 2,
+  "loop": {
+    "max_steps": 4,
+    "escalation_target": "research_review_queue"
+  },
+  "subagents": [
+    {"id": "s1", "status": "ok", "findings_tokens": 300, "load_bearing": true, "edits_files": false},
+    {"id": "s2", "status": "empty", "findings_tokens": 0, "load_bearing": false, "edits_files": false},
+    {"id": "s3", "status": "ok", "findings_tokens": 400, "load_bearing": false, "edits_files": true},
+    {"id": "s4", "status": "ok", "findings_tokens": 400, "load_bearing": false, "edits_files": false},
+    {"id": "s5", "status": "ok", "findings_tokens": 300, "load_bearing": true, "edits_files": false},
+    {"id": "s6", "status": "empty", "findings_tokens": 0, "load_bearing": false, "edits_files": false}
+  ]
+}

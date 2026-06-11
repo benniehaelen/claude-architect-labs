@@ -1,0 +1,7 @@
+{
+  "name": "research_design_bad",
+  "overflow_policy": "silent_drop",
+  "isolation_policy": "fork_only",
+  "escalate_on_no_convergence": false,
+  "observable": false
+}
