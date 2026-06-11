@@ -1,0 +1,8 @@
+{
+  "name": "agent_config_nosandbox",
+  "mode": "default",
+  "allow": ["Bash(npm test)", "Bash(npm run build)", "Read(/src/*)", "Edit(/src/*)"],
+  "deny": ["Bash(rm *)", "Bash(curl *)", "Read(~/.ssh/**)"],
+  "sandbox_enabled": false,
+  "isolation": "worktree"
+}

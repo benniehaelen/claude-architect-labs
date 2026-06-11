@@ -111,6 +111,45 @@ prompt nor a tool description governs either control.
 
 Source: https://code.claude.com/docs/en/mcp
 
+## Agent permissions and sandboxing
+
+Verified on 2026-06-11. Lab 08 (`labs/08-agent-permissions-sandboxing`) depends on these facts.
+Claude Code controls what an agent may do with two complementary layers, and knowing which layer
+covers which threat is the heart of the lab.
+
+Permission rules. The `permissions` object in a settings file has `allow`, `ask`, and `deny` arrays.
+Rules are evaluated in order: deny, then ask, then allow, and the first match wins, so a deny at any
+settings scope cannot be overridden by an allow at another. A rule is `Tool` or `Tool(specifier)`,
+for example `Bash(npm run test:*)`, `Read(./.env)`, `Edit(/src/**)`, `WebFetch(domain:example.com)`,
+`mcp__server__tool`, or `Agent(Explore)`. Permission rules are enforced by Claude Code, not by the
+model: a `CLAUDE.md` instruction shapes what Claude tries but does not change what is allowed.
+
+Permission modes, set with `defaultMode`: `default`, `acceptEdits`, `plan`, `auto` (a research
+preview), `dontAsk`, and `bypassPermissions`. The `bypassPermissions` mode skips prompts except those
+forced by an explicit `ask` rule, with `rm -rf /` and `rm -rf ~` still prompting as a circuit breaker.
+The `--dangerously-skip-permissions` CLI flag likewise skips the whether-each-tool-runs checks and is
+blocked when running as root. An administrator can set `permissions.disableBypassPermissionsMode` to
+`"disable"` to prevent bypass mode.
+
+Sandbox. The sandboxed Bash tool provides OS-level filesystem and network isolation (Seatbelt on
+macOS, bubblewrap on Linux and WSL2). Enabled with `sandbox.enabled`, it confines writes to the
+working directory and the session temp directory by default and routes network through an allowlist
+(`allowedDomains`, `deniedDomains`), with `sandbox.filesystem.allowWrite`, `denyWrite`, `denyRead`,
+and `allowRead` to adjust the boundary. The isolation is enforced by the operating system on the
+running process, so it holds "regardless of what the model chose to run and even if an allowed
+command does more than its name suggests."
+
+Edge: the two layers cover different threats, and the gap between them is the lab's hinge. Read and
+Edit permission deny rules apply to Claude's own file tools and to file commands Claude Code
+recognizes in Bash, but the documentation states plainly that they "do not apply to arbitrary
+subprocesses that read or write files indirectly, like a Python or Node script that opens files
+itself." So a tight `Read(~/.ssh/**)` deny rule does not stop a credential read performed inside an
+allowed build subprocess. Only the OS-level sandbox contains that, because it binds the process, not
+the model's tool choice. Permission scoping and the sandbox are therefore complementary, and scoping
+alone is not subprocess containment.
+
+Sources: https://code.claude.com/docs/en/permissions and https://code.claude.com/docs/en/sandboxing
+
 ## Re-verification checklist
 
 Run this before each tagged release and update the verification date above.
@@ -123,4 +162,7 @@ Run this before each tagged release and update the verification date above.
 5. Confirm the MCP primitives (tools, resources, prompts), the `MAX_MCP_OUTPUT_TOKENS` default of
    25,000 and the 10,000-token warning, the `anthropic/maxResultSizeChars` 500,000-character
    ceiling, and the `oauth.scopes` restriction behavior.
-6. Update every dated reference in the labs and question sets that depends on these facts.
+6. Confirm the permission rule precedence (deny, ask, allow), the permission modes including
+   `bypassPermissions` and `--dangerously-skip-permissions`, the `sandbox.enabled` OS-level Bash
+   isolation, and the edge that Read and Edit deny rules do not cover arbitrary subprocesses.
+7. Update every dated reference in the labs and question sets that depends on these facts.

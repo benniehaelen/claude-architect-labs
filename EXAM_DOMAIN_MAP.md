@@ -23,7 +23,7 @@ governance lab.
 ## Lab to domain mapping
 
 Each lab serves a primary domain and usually touches one or two secondary domains. The cross-cut
-applies to all of them. Labs 01 through 06 are v0.1; lab 07 is the first v0.2 addition.
+applies to all of them. Labs 01 through 06 are v0.1; labs 07 and 08 are the first v0.2 additions.
 
 | Lab | Primary domain | Secondary domains |
 | --- | --- | --- |
@@ -34,6 +34,7 @@ applies to all of them. Labs 01 through 06 are v0.1; lab 07 is the first v0.2 ad
 | 05 structured-output-reliability | Prompt Engineering and Structured Output | Context Management and Reliability |
 | 06 context-management-failure-modes | Context Management and Reliability | Agentic Architecture and Orchestration |
 | 07 human-escalation-patterns | Agentic Architecture and Orchestration | Context Management and Reliability |
+| 08 agent-permissions-sandboxing | Claude Code Configuration and Workflows | Tool Design and MCP Integration |
 
 ## How effort is weighted
 
@@ -47,7 +48,8 @@ escalation patterns, is a second primary for this domain. As the rest of v0.2 an
 toward its target.
 
 The Claude Code and prompt-engineering pair together carry about 40% (20% plus 20%). Labs 04 and 05
-are the v0.1 anchors for that pair, and the timed practice sets weight toward them accordingly.
+are the v0.1 anchors for that pair, and lab 08 (agent permissions and sandboxing) adds a second
+Claude Code primary in v0.2. The timed practice sets weight toward this pair accordingly.
 
 Tool design and MCP integration at 18% is served by labs 02 and 03. Context management and
 reliability at 15% is served by lab 06 as a primary and by labs 01, 03, and 05 as a secondary, which

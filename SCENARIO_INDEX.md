@@ -32,13 +32,14 @@ six and maps each to the labs that exercise it.
 
 ## Scenario to lab mapping
 
-Labs 01 through 06 are v0.1; lab 07 (human escalation patterns) is the first v0.2 addition.
+Labs 01 through 06 are v0.1; labs 07 (human escalation patterns) and 08 (agent permissions and
+sandboxing) are the first v0.2 additions.
 
 | Scenario | Labs that exercise it |
 | --- | --- |
 | Customer support agents | 01 agent-loop-observability, 02 tool-catalog-design, 07 human-escalation-patterns |
 | Multi-agent research systems | 01 agent-loop-observability, 06 context-management-failure-modes |
-| CI/CD integrations | 03 mcp-boundaries, 04 claude-code-team-workflow |
+| CI/CD integrations | 03 mcp-boundaries, 04 claude-code-team-workflow, 08 agent-permissions-sandboxing |
 | Structured data extraction pipelines | 05 structured-output-reliability |
 | Internal knowledge assistants | 03 mcp-boundaries, 06 context-management-failure-modes |
 | Developer-productivity tools | 02 tool-catalog-design, 04 claude-code-team-workflow |
