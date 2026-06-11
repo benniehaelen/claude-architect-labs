@@ -1,0 +1,7 @@
+{
+  "name": "escalation_policy_noroute",
+  "triggers": ["out_of_policy", "high_impact", "low_confidence", "user_request"],
+  "escalate_timing": "pre_action",
+  "route": null,
+  "default": "proceed"
+}

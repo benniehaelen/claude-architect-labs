@@ -100,6 +100,13 @@ context with an orchestration limit, pins the load-bearing context and signals t
 checkpoints the filesystem so a branch is isolated and revertible. Run with
 `python labs/06-context-management-failure-modes/solution/run.py`.
 
+Lab 07, human escalation patterns (Agentic Architecture and Orchestration). The first v0.2 lab. A weak
+escalation policy escalates only on high impact, escalates after acting, and proceeds by default, so an
+out-of-policy exception is handled silently and a high-impact account closure runs before any human
+sees it. The lab designs a policy that covers every must-escalate case, escalates before the action,
+routes to a human queue, and holds when the handoff cannot be delivered. Run with
+`python labs/07-human-escalation-patterns/solution/run.py`.
+
 ## House style and self-enforcement
 
 This repository practices what it teaches. The writing rules live in `.claude/rules/house-style.md`
@@ -115,9 +122,9 @@ git config core.hooksPath .githooks
 
 ## Status
 
-Version 0.1 is complete: all six labs are built.
+Version 0.1 is complete (all six labs), and v0.2 is in progress.
 
-Built:
+Built (v0.1):
 - Lab 01: agent-loop-observability
 - Lab 02: tool-catalog-design
 - Lab 03: mcp-boundaries
@@ -125,8 +132,11 @@ Built:
 - Lab 05: structured-output-reliability
 - Lab 06: context-management-failure-modes
 
+Built (v0.2):
+- Lab 07: human-escalation-patterns
+
 Every built lab includes a flawed version, a reference solution, a dry-run execution path, a decision
 record, a failure-mode catalog, an exam-angle note, a question set, an eval, and a timed practice
-set. They pass their evals (`python shared/evals/check_lab01.py` through `check_lab06.py`). The v0.2
-and v1.0 additions (the citations-versus-structured-output and escalation labs, agent permissions and
-sandboxing, and the capstones) are described in `SPEC.md`.
+set. They pass their evals (`python shared/evals/check_lab01.py` through `check_lab07.py`). The
+remaining v0.2 and v1.0 additions (agent permissions and sandboxing, and the capstones) are described
+in `SPEC.md`.

@@ -20,10 +20,10 @@ turns on where automation stops and how the system fails safely. They are enforc
 mandatory Governance and escalation section of every `DECISION_RECORD.md`, not through a separate
 governance lab.
 
-## Lab to domain mapping (v0.1)
+## Lab to domain mapping
 
 Each lab serves a primary domain and usually touches one or two secondary domains. The cross-cut
-applies to all of them.
+applies to all of them. Labs 01 through 06 are v0.1; lab 07 is the first v0.2 addition.
 
 | Lab | Primary domain | Secondary domains |
 | --- | --- | --- |
@@ -33,6 +33,7 @@ applies to all of them.
 | 04 claude-code-team-workflow | Claude Code Configuration and Workflows | Agentic Architecture and Orchestration |
 | 05 structured-output-reliability | Prompt Engineering and Structured Output | Context Management and Reliability |
 | 06 context-management-failure-modes | Context Management and Reliability | Agentic Architecture and Orchestration |
+| 07 human-escalation-patterns | Agentic Architecture and Orchestration | Context Management and Reliability |
 
 ## How effort is weighted
 
@@ -40,9 +41,10 @@ The build deliberately mirrors the domain percentages rather than spreading effo
 
 Agentic architecture and orchestration is the largest single domain at 27%, so roughly a quarter
 of all labs and questions serve it. In v0.1 that is lab 01 as a primary, with labs 02, 04, and 06
-reinforcing orchestration as a secondary concern. As v0.2 and v1.0 add labs (human escalation
-patterns, agent permissions and sandboxing, and the multi-agent research capstone), the agentic
-share grows toward its target.
+reinforcing orchestration as a secondary concern. The first v0.2 addition, lab 07 on human
+escalation patterns, is a second primary for this domain. As the rest of v0.2 and v1.0 add labs
+(agent permissions and sandboxing, and the multi-agent research capstone), the agentic share grows
+toward its target.
 
 The Claude Code and prompt-engineering pair together carry about 40% (20% plus 20%). Labs 04 and 05
 are the v0.1 anchors for that pair, and the timed practice sets weight toward them accordingly.

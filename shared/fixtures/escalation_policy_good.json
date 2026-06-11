@@ -1,0 +1,7 @@
+{
+  "name": "escalation_policy_good",
+  "triggers": ["out_of_policy", "high_impact", "low_confidence", "user_request"],
+  "escalate_timing": "pre_action",
+  "route": "human_review_queue",
+  "default": "hold"
+}
