@@ -24,8 +24,9 @@ These are added as each lab is built out.
 | `lab03_timed.md` | 03 mcp-boundaries | Available |
 | `lab04_timed.md` | 04 claude-code-team-workflow | Available |
 | `lab05_timed.md` | 05 structured-output-reliability | Available |
+| `lab06_timed.md` | 06 context-management-failure-modes | Available |
 
-The set for lab 06 arrives when that lab is built.
+All six v0.1 labs ship a timed set. Larger and mixed-topic sets arrive with the v1.0 capstones.
 
 ## Pooled set
 

@@ -1,0 +1,6 @@
+{
+  "name": "session_design_summarize",
+  "budget_enforcement": "orchestration",
+  "overflow_policy": "summarize_lossy",
+  "isolation_policy": "file_checkpoint"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "session_design_bad",
+  "budget_enforcement": "prompt",
+  "overflow_policy": "silent_drop",
+  "isolation_policy": "fork_only"
+}

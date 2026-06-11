@@ -1,0 +1,12 @@
+{
+  "name": "context_scenario",
+  "note": "A multi-agent research session that accumulates context past the window limit and forks a subagent that edits a shared file. context_limit is the window. segments are accumulated context in arrival order; seg1 is an early load-bearing detail (a hard user constraint) that an oldest-first eviction would drop. branch_edits are the files a forked subagent rewrites. The total of 1350 tokens exceeds the 1000-token limit, so an overflow policy must decide what is lost and whether the loss is signaled.",
+  "context_limit": 1000,
+  "segments": [
+    {"id": "seg1", "tokens": 300, "load_bearing": true},
+    {"id": "seg2", "tokens": 400, "load_bearing": false},
+    {"id": "seg3", "tokens": 300, "load_bearing": false},
+    {"id": "seg4", "tokens": 350, "load_bearing": false}
+  ],
+  "branch_edits": ["report.md", "findings.json"]
+}

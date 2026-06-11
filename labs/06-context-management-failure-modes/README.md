@@ -19,5 +19,28 @@ checkpoint and summarize at the right boundaries, and use file checkpointing (no
 when a branch must be able to revert file changes. The lab contrasts a system that silently drops
 context against one that detects and signals overflow and isolates file state correctly.
 
-Status: scaffolded for v0.1. The flawed version, reference solution, failure-mode catalog, and
-question set are added when this lab is built out.
+## How to run (dry-run, free, deterministic)
+
+No installs and no paid API calls are needed. The session logic is deterministic and reads a design
+and a scenario from `../../shared/fixtures`. From the repository root:
+
+```
+python labs/06-context-management-failure-modes/bad_version/run.py
+python labs/06-context-management-failure-modes/solution/run.py
+python shared/evals/check_lab06.py
+```
+
+Both runners use the same session engine (`../../shared/harness/context.py`). Only the design
+differs. The silent design budgets context by prompt, evicts the oldest segments on overflow with no
+signal (dropping an early load-bearing detail), and relies on forking alone, so the forked branch's
+file edits leak to the parent and cannot be reverted. The loud design budgets by an orchestration
+limit, pins the load-bearing context and signals the overflow, and checkpoints the filesystem so the
+branch is isolated and revertible. The eval also runs a summarize-lossy design that isolates files
+but still loses load-bearing detail without signaling.
+
+## Status
+
+Built for v0.1. Includes the silent design, the loud design, the shared session engine (the overflow
+policies, the branch-isolation policies, and the design analyzer), the failure-mode catalog, the
+decision record, the question set, and a timed practice set
+(`../../practice/lab06_timed.md`).

@@ -93,6 +93,13 @@ constrained-decoding transform pass, and verifies each record against the source
 that no evidence supports. Run with
 `python labs/05-structured-output-reliability/solution/run.py`.
 
+Lab 06, context management failure modes (Context Management and Reliability). A long multi-agent
+session overflows and silently drops an early load-bearing detail, and a forked subagent's file edits
+leak to the parent because forking branches the conversation, not the filesystem. The lab budgets
+context with an orchestration limit, pins the load-bearing context and signals the overflow, and
+checkpoints the filesystem so a branch is isolated and revertible. Run with
+`python labs/06-context-management-failure-modes/solution/run.py`.
+
 ## House style and self-enforcement
 
 This repository practices what it teaches. The writing rules live in `.claude/rules/house-style.md`
@@ -108,7 +115,7 @@ git config core.hooksPath .githooks
 
 ## Status
 
-Version 0.1 in progress.
+Version 0.1 is complete: all six labs are built.
 
 Built:
 - Lab 01: agent-loop-observability
@@ -116,12 +123,10 @@ Built:
 - Lab 03: mcp-boundaries
 - Lab 04: claude-code-team-workflow
 - Lab 05: structured-output-reliability
-
-Scaffolded:
 - Lab 06: context-management-failure-modes
 
-The built labs include flawed versions, reference solutions, dry-run execution paths, decision
-records, failure-mode catalogs, exam-angle notes, question sets, evals, and timed practice. They
-pass their evals (`python shared/evals/check_lab01.py`, `check_lab02.py`, `check_lab03.py`,
-`check_lab04.py`, and `check_lab05.py`). The scaffolded labs have their README, START_HERE,
-EXAM_ANGLE, and a full-skeleton DECISION_RECORD in place, ready to build out.
+Every built lab includes a flawed version, a reference solution, a dry-run execution path, a decision
+record, a failure-mode catalog, an exam-angle note, a question set, an eval, and a timed practice
+set. They pass their evals (`python shared/evals/check_lab01.py` through `check_lab06.py`). The v0.2
+and v1.0 additions (the citations-versus-structured-output and escalation labs, agent permissions and
+sandboxing, and the capstones) are described in `SPEC.md`.
