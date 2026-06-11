@@ -14,5 +14,22 @@ reproduces the 400 from the single-call design, then runs the multi-pass pipelin
 extraction corpus and checks that every structured claim maps to cited evidence. A live run is
 optional and clearly marked.
 
-Status: the runnable harness and fixtures for this lab are added when the lab is built out. For now
-this file records the intended shape of the exercise.
+## Suggested path
+
+1. Read `README.md` for the scenario and the run commands.
+2. Run the single-call design and read its analysis. Notice that combining citations and the
+   structured-output format returns a 400 and emits nothing.
+3. Run the multi-pass design and compare. The cited pass grounds the claims, the transform pass shapes
+   them with constrained decoding, and the verification pass holds the ungrounded gym-membership claim
+   while emitting the two grounded records.
+4. Read `../../shared/harness/extraction.py`. Confirm that both runners call the same `run_pipeline`
+   engine and that only the design differs, and see how the verification pass maps each record to a
+   cited span.
+5. Run `python shared/evals/check_lab05.py` to see the properties the pipeline must satisfy, including
+   the prompt-only design that emits the ungrounded record for want of a verification pass.
+6. Work `questions.md`, then check `answers.md` and study the branch labels. Finish with the timed set
+   in `../../practice/lab05_timed.md` against the clock.
+7. Read `DECISION_RECORD.md`, paying attention to the mandatory Governance and escalation section, and
+   connect it to the primitive in `../../VERIFIED.md`.
+
+Status: built for v0.1.

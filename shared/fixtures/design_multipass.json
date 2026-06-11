@@ -1,0 +1,8 @@
+{
+  "name": "design_multipass",
+  "single_call": false,
+  "requests_citations": true,
+  "requests_structured_format": true,
+  "schema_enforcement": "constrained",
+  "grounding": "verified"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "design_single_call",
+  "single_call": true,
+  "requests_citations": true,
+  "requests_structured_format": true,
+  "schema_enforcement": "constrained",
+  "grounding": "verified"
+}
