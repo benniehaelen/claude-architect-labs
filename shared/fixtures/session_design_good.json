@@ -1,0 +1,6 @@
+{
+  "name": "session_design_good",
+  "budget_enforcement": "orchestration",
+  "overflow_policy": "checkpoint_signal",
+  "isolation_policy": "file_checkpoint"
+}
