@@ -1,0 +1,12 @@
+{
+  "name": "dev_catalog_good",
+  "note": "A deliberate developer tool catalog. Each intent maps to one tool, each tool has a single effect level, and every write or destructive tool is gated. Running tests and reading source are read-only, editing source and opening a PR are gated writes, and deploying is a gated destructive action.",
+  "tools": [
+    {"name": "run_tests", "description": "Run the test suite. Read only.", "intents": ["run_tests"], "effect": "read", "gated": false},
+    {"name": "read_source", "description": "Read a source file. Read only.", "intents": ["read_source"], "effect": "read", "gated": false},
+    {"name": "edit_source", "description": "Edit a source file. Requires confirmation.", "intents": ["edit_source"], "effect": "write", "gated": true},
+    {"name": "create_doc", "description": "Create a new documentation file. Requires confirmation.", "intents": ["create_doc"], "effect": "write", "gated": true},
+    {"name": "open_pr", "description": "Open a pull request. Requires confirmation.", "intents": ["open_pr"], "effect": "write", "gated": true},
+    {"name": "deploy", "description": "Deploy to production. Requires authorization and confirmation.", "intents": ["deploy"], "effect": "destructive", "gated": true}
+  ]
+}

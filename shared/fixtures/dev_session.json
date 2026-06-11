@@ -1,0 +1,20 @@
+{
+  "name": "dev_session",
+  "note": "A session of developer actions for the capstone. Each action invokes a tool, produces an artifact subject to a convention, or both. dev_intents_meta maps each tool intent to its effect for the catalog analyzer. d1 runs tests. d2 edits a source file, whose artifact is subject to the house-style convention on edit. d3 creates a new doc, subject to house style on create, the write-time gap. d4 deploys without authorization, a high-impact tool. d5 is a commit, a convention-only action subject to the no-secrets convention.",
+  "dev_intents_meta": {
+    "run_tests": "read",
+    "read_source": "read",
+    "edit_source": "write",
+    "create_doc": "write",
+    "open_pr": "write",
+    "deploy": "destructive",
+    "run_migration": "destructive"
+  },
+  "actions": [
+    {"id": "d1", "intent": "run_tests", "authorized": false, "confirmed": false, "convention": null, "event": null, "description": "Run the test suite."},
+    {"id": "d2", "intent": "edit_source", "authorized": true, "confirmed": true, "convention": "house_style_no_em_dash", "event": "edit", "description": "Edit an existing source file."},
+    {"id": "d3", "intent": "create_doc", "authorized": true, "confirmed": true, "convention": "house_style_no_em_dash", "event": "create", "description": "Create a new Markdown documentation file."},
+    {"id": "d4", "intent": "deploy", "authorized": false, "confirmed": false, "convention": null, "event": null, "description": "Deploy to production without authorization."},
+    {"id": "d5", "intent": null, "authorized": false, "confirmed": false, "convention": "no_committed_secrets", "event": "commit", "description": "Commit the changes."}
+  ]
+}

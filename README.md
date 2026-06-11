@@ -148,9 +148,11 @@ Built (v0.2):
 Built (v1.0 capstones):
 - Customer support agent (composes labs 01, 02, and 07)
 - Multi-agent research system (composes labs 01 and 06)
+- Developer-productivity tools (composes labs 02 and 04)
 
 Every built lab includes a flawed version, a reference solution, a dry-run execution path, a decision
 record, a failure-mode catalog, an exam-angle note, a question set, an eval, and a timed practice
 set. They pass their evals (`python shared/evals/check_lab01.py` through `check_lab08.py`), and the
-capstones pass `check_capstone_support.py` and `check_capstone_research.py`. The remaining capstones for
-the other four anchor scenarios are described in `SPEC.md` and `SCENARIO_INDEX.md`.
+capstones pass `check_capstone_support.py`, `check_capstone_research.py`, and `check_capstone_dev.py`.
+The remaining capstones for the other three anchor scenarios are described in `SPEC.md` and
+`SCENARIO_INDEX.md`.
