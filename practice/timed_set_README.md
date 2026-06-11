@@ -25,8 +25,10 @@ These are added as each lab is built out.
 | `lab04_timed.md` | 04 claude-code-team-workflow | Available |
 | `lab05_timed.md` | 05 structured-output-reliability | Available |
 | `lab06_timed.md` | 06 context-management-failure-modes | Available |
+| `lab07_timed.md` | 07 human-escalation-patterns | Available |
 
-All six v0.1 labs ship a timed set. Larger and mixed-topic sets arrive with the v1.0 capstones.
+All six v0.1 labs and the first v0.2 lab ship a timed set. Larger and mixed-topic sets arrive with
+the v1.0 capstones.
 
 ## Pooled set
 

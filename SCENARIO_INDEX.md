@@ -30,11 +30,13 @@ six and maps each to the labs that exercise it.
    subagents, and workflows. The hard parts are configuration layering, the rule-versus-runtime
    enforcement gap, and team-wide governance.
 
-## Scenario to lab mapping (v0.1)
+## Scenario to lab mapping
+
+Labs 01 through 06 are v0.1; lab 07 (human escalation patterns) is the first v0.2 addition.
 
 | Scenario | Labs that exercise it |
 | --- | --- |
-| Customer support agents | 01 agent-loop-observability, 02 tool-catalog-design |
+| Customer support agents | 01 agent-loop-observability, 02 tool-catalog-design, 07 human-escalation-patterns |
 | Multi-agent research systems | 01 agent-loop-observability, 06 context-management-failure-modes |
 | CI/CD integrations | 03 mcp-boundaries, 04 claude-code-team-workflow |
 | Structured data extraction pipelines | 05 structured-output-reliability |

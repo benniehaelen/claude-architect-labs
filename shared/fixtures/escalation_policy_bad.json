@@ -1,0 +1,7 @@
+{
+  "name": "escalation_policy_bad",
+  "triggers": ["high_impact"],
+  "escalate_timing": "post_action",
+  "route": "human_review_queue",
+  "default": "proceed"
+}
