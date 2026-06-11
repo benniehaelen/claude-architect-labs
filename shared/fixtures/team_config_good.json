@@ -1,0 +1,27 @@
+{
+  "name": "team_config_good",
+  "note": "A layered configuration. The house-style must-hold keeps the path-scoped rule as a guide and adds a PostToolUse hook that governs both create and edit, with a pre-commit check as a backstop. The no-secrets must-hold is governed at its binding event by a pre-commit check and a CI gate. The preference is guided by a rule, not governed by a blocking control. Every must-hold convention is governed on its binding events, and the preference is guided in the right layer.",
+  "conventions": [
+    {
+      "name": "house_style_no_em_dash",
+      "kind": "must",
+      "description": "Markdown files must not contain em-dashes.",
+      "enforced_by": ["rule", "hook", "precommit"],
+      "binding_events": ["create", "edit"]
+    },
+    {
+      "name": "no_committed_secrets",
+      "kind": "must",
+      "description": "Credentials must never be committed.",
+      "enforced_by": ["precommit", "ci"],
+      "binding_events": ["commit"]
+    },
+    {
+      "name": "heading_case",
+      "kind": "preference",
+      "description": "Headings should use sentence case.",
+      "enforced_by": ["rule"],
+      "binding_events": []
+    }
+  ]
+}

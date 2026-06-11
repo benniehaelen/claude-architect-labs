@@ -19,5 +19,28 @@ runtime while preferences are guided. The lab contrasts a rules-only setup that 
 new files against a layered setup, and it uses this repository's own house-style enforcement as the
 worked example.
 
-Status: scaffolded for v0.1. The flawed version, reference solution, failure-mode catalog, and
-question set are added when this lab is built out.
+## How to run (dry-run, free, deterministic)
+
+No installs and no paid API calls are needed. The enforcement logic is deterministic and reads
+configurations and an event stream from `../../shared/fixtures`. From the repository root:
+
+```
+python labs/04-claude-code-team-workflow/bad_version/run.py
+python labs/04-claude-code-team-workflow/solution/run.py
+python shared/evals/check_lab04.py
+```
+
+Both runners use the same enforcement engine (`../../shared/harness/config.py`). Only the
+configuration differs. On the rules-and-memory configuration, a new file slips past the house-style
+rule (the rule does not load on create), a memory-only secrets convention cannot block a commit, and
+a preference is over-controlled with a blocking hook. On the layered configuration, a PostToolUse
+hook governs both create and edit, a pre-commit check and a CI gate govern the commit, and the
+preference is guided by the rule. The lesson is that a convention holds because of the layer that
+governs it on the right event, not because it was written down.
+
+## Status
+
+Built for v0.1. Includes the rules-and-memory configuration, the layered configuration, the shared
+enforcement engine (the layer model, the event driver, and the configuration analyzer), the
+failure-mode catalog, the decision record, the question set, and a timed practice set
+(`../../practice/lab04_timed.md`).

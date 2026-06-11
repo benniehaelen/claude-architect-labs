@@ -1,0 +1,30 @@
+{
+  "name": "config_events",
+  "note": "The shared event stream used against both configurations. Each event names the action (create, edit, or commit) and the convention it tests. e1 is the verified write-time gap: a path-scoped rule does not load when Claude creates a matching file (see VERIFIED.md). e2 is the same convention on an edit, where a rule does load. e3 tests a must-hold security convention at its binding event, the commit. e4 tests a preference, where a guide is the right layer.",
+  "events": [
+    {
+      "id": "e1",
+      "action": "create",
+      "target_convention": "house_style_no_em_dash",
+      "description": "Claude creates a new Markdown file. A path-scoped rule does not load on create."
+    },
+    {
+      "id": "e2",
+      "action": "edit",
+      "target_convention": "house_style_no_em_dash",
+      "description": "Claude edits an existing Markdown file. A path-scoped rule loads on read and edit."
+    },
+    {
+      "id": "e3",
+      "action": "commit",
+      "target_convention": "no_committed_secrets",
+      "description": "A commit would introduce a credential. It must be blocked before it lands."
+    },
+    {
+      "id": "e4",
+      "action": "edit",
+      "target_convention": "heading_case",
+      "description": "A heading is written in title case instead of the preferred sentence case. A preference, not a must."
+    }
+  ]
+}
