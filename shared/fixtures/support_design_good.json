@@ -1,0 +1,6 @@
+{
+  "name": "support_design_good",
+  "catalog": "support_catalog_good",
+  "policy": "escalation_policy_good",
+  "observable": true
+}

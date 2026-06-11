@@ -43,13 +43,15 @@ The root holds the cross-cutting documents that frame the whole repository:
 - `VERIFIED.md`: dated facts, version gates, open bugs, and source URLs.
 - `SPEC.md`: the build brief for the repository.
 
-The work itself lives in two trees:
+The work itself lives in three trees:
 
 - `labs/`: a small number of deep, scenario-driven labs. Each lab has a flawed version, a
   reference solution, a decision record, a failure-mode catalog, an exam-angle note, and a paired
   question set.
-- `practice/`: timed scenario sets tied to the labs, built for the two-minutes-per-question pace
-  of the exam.
+- `capstones/`: v1.0 integration problems, each taking one anchor scenario end to end and composing
+  the relevant labs into a single design with a full decision record and a timed question set.
+- `practice/`: timed scenario sets tied to the labs and capstones, built for the
+  two-minutes-per-question pace of the exam.
 
 Shared infrastructure lives in `shared/`: a harness, mocked services, recorded fixtures, and
 evals. No lab requires paid API calls to learn. Every built lab ships a dry-run mode with mocked
@@ -143,8 +145,11 @@ Built (v0.2):
 - Lab 07: human-escalation-patterns
 - Lab 08: agent-permissions-sandboxing
 
+Built (v1.0 capstones):
+- Customer support agent (composes labs 01, 02, and 07)
+
 Every built lab includes a flawed version, a reference solution, a dry-run execution path, a decision
 record, a failure-mode catalog, an exam-angle note, a question set, an eval, and a timed practice
-set. They pass their evals (`python shared/evals/check_lab01.py` through `check_lab08.py`). The
-remaining v0.2 and v1.0 additions (the citations-versus-structured-output deep dive and the capstones)
-are described in `SPEC.md`.
+set. They pass their evals (`python shared/evals/check_lab01.py` through `check_lab08.py`), and the
+capstone passes `python shared/evals/check_capstone_support.py`. The remaining capstones for the other
+five anchor scenarios are described in `SPEC.md` and `SCENARIO_INDEX.md`.

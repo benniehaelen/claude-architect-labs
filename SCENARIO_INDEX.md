@@ -44,10 +44,16 @@ sandboxing) are the first v0.2 additions.
 | Internal knowledge assistants | 03 mcp-boundaries, 06 context-management-failure-modes |
 | Developer-productivity tools | 02 tool-catalog-design, 04 claude-code-team-workflow |
 
-## How the capstones will use this index (v1.0)
+## The capstones (v1.0)
 
 Each v1.0 capstone takes one anchor scenario end to end, combining the relevant labs into a single
-design problem with a full decision record and a timed question set. The capstone for multi-agent
-research, for example, draws on the orchestration work in lab 01 and the context-budgeting work in
-lab 06, and it exercises session forking and its filesystem edge (see `VERIFIED.md`). The capstones
-are out of scope for v0.1 and are listed here so the lab work points toward them.
+design problem with a full decision record and a timed question set. They live in `capstones/`.
+
+The first capstone is built: the customer support agent (`capstones/customer-support-agent`), which
+composes lab 01 (observable loop), lab 02 (tool catalog and gate), and lab 07 (escalation policy) into
+one support-request handler and shows how a failure in any one layer compounds into a system failure.
+
+The remaining capstones are planned. The multi-agent research capstone, for example, draws on the
+orchestration work in lab 01 and the context-budgeting work in lab 06, and it exercises session forking
+and its filesystem edge (see `VERIFIED.md`). Each capstone reuses the lab engines directly rather than
+reimplementing them.
