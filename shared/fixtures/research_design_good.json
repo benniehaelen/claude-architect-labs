@@ -1,0 +1,7 @@
+{
+  "name": "research_design_good",
+  "overflow_policy": "checkpoint_signal",
+  "isolation_policy": "file_checkpoint",
+  "escalate_on_no_convergence": true,
+  "observable": true
+}

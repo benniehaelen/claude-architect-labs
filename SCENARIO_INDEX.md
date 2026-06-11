@@ -49,11 +49,14 @@ sandboxing) are the first v0.2 additions.
 Each v1.0 capstone takes one anchor scenario end to end, combining the relevant labs into a single
 design problem with a full decision record and a timed question set. They live in `capstones/`.
 
-The first capstone is built: the customer support agent (`capstones/customer-support-agent`), which
-composes lab 01 (observable loop), lab 02 (tool catalog and gate), and lab 07 (escalation policy) into
-one support-request handler and shows how a failure in any one layer compounds into a system failure.
+Two capstones are built. The customer support agent (`capstones/customer-support-agent`) composes
+lab 01 (observable loop), lab 02 (tool catalog and gate), and lab 07 (escalation policy) into one
+support-request handler. The multi-agent research system (`capstones/multi-agent-research`) composes
+lab 01 (orchestration) and lab 06 (context management), exercising session forking and its filesystem
+edge (see `VERIFIED.md`): the lead escalates rather than fabricating an answer when grounding is thin,
+budgets context loudly so the load-bearing finding survives, and isolates forked file edits.
 
-The remaining capstones are planned. The multi-agent research capstone, for example, draws on the
-orchestration work in lab 01 and the context-budgeting work in lab 06, and it exercises session forking
-and its filesystem edge (see `VERIFIED.md`). Each capstone reuses the lab engines directly rather than
-reimplementing them.
+The remaining capstones, for CI/CD integrations, structured data extraction, internal knowledge
+assistants, and developer-productivity tools, are planned. Each capstone reuses the lab engines directly
+rather than reimplementing them, and shows how a failure in any one composed layer becomes a system
+failure.
