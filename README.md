@@ -86,6 +86,13 @@ configuration so a hook governs file writes, a pre-commit check and a CI gate go
 preferences stay guided. Run with
 `python labs/04-claude-code-team-workflow/solution/run.py`.
 
+Lab 05, structured output reliability (Prompt Engineering and Structured Output). A single call that
+asks for citations and the structured-output format together returns a 400, because the two are
+incompatible. The lab builds a multi-pass pipeline that grounds with a cited pass, shapes with a
+constrained-decoding transform pass, and verifies each record against the source, holding any claim
+that no evidence supports. Run with
+`python labs/05-structured-output-reliability/solution/run.py`.
+
 ## House style and self-enforcement
 
 This repository practices what it teaches. The writing rules live in `.claude/rules/house-style.md`
@@ -108,13 +115,13 @@ Built:
 - Lab 02: tool-catalog-design
 - Lab 03: mcp-boundaries
 - Lab 04: claude-code-team-workflow
+- Lab 05: structured-output-reliability
 
 Scaffolded:
-- Lab 05: structured-output-reliability
 - Lab 06: context-management-failure-modes
 
 The built labs include flawed versions, reference solutions, dry-run execution paths, decision
 records, failure-mode catalogs, exam-angle notes, question sets, evals, and timed practice. They
-pass their evals (`python shared/evals/check_lab01.py`, `check_lab02.py`, `check_lab03.py`, and
-`check_lab04.py`). The scaffolded labs have their README, START_HERE, EXAM_ANGLE, and a full-skeleton
-DECISION_RECORD in place, ready to build out.
+pass their evals (`python shared/evals/check_lab01.py`, `check_lab02.py`, `check_lab03.py`,
+`check_lab04.py`, and `check_lab05.py`). The scaffolded labs have their README, START_HERE,
+EXAM_ANGLE, and a full-skeleton DECISION_RECORD in place, ready to build out.

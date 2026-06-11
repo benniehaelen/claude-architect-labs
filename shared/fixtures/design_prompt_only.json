@@ -1,0 +1,8 @@
+{
+  "name": "design_prompt_only",
+  "single_call": false,
+  "requests_citations": false,
+  "requests_structured_format": false,
+  "schema_enforcement": "prompt",
+  "grounding": "prompt"
+}

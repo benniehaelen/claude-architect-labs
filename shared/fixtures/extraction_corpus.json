@@ -1,0 +1,23 @@
+{
+  "name": "extraction_corpus",
+  "note": "A small extraction corpus for a structured data extraction pipeline. spans are the cited evidence in the source document. claims are the output of the cited pass: each carries the text the model asserted and the evidence span it cited, or null when the model asserted a claim with no support. records are the output of the transform-to-schema pass, one per claim, shaped to the target schema. The verification pass maps each record back through its claim to a real evidence span. claim index 2 is an ungrounded assertion the verification pass must hold rather than emit.",
+  "doc_id": "policy-001",
+  "spans": {
+    "s1": "Members may appeal a denied claim within 30 days of the decision.",
+    "s2": "The annual in-network deductible is $1,500 per member.",
+    "s3": "Telehealth visits are covered at no additional copay."
+  },
+  "schema": {
+    "required": ["topic", "value"]
+  },
+  "claims": [
+    {"text": "The appeal window is 30 days.", "evidence": "s1"},
+    {"text": "The annual deductible is $1,500.", "evidence": "s2"},
+    {"text": "Members receive a free gym membership.", "evidence": null}
+  ],
+  "records": [
+    {"fields": {"topic": "appeal_window", "value": "30 days"}, "claim_index": 0},
+    {"fields": {"topic": "deductible", "value": "$1,500"}, "claim_index": 1},
+    {"fields": {"topic": "perk", "value": "free gym membership"}, "claim_index": 2}
+  ]
+}

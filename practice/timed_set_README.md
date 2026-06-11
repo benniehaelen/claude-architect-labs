@@ -23,8 +23,9 @@ These are added as each lab is built out.
 | `lab02_timed.md` | 02 tool-catalog-design | Available |
 | `lab03_timed.md` | 03 mcp-boundaries | Available |
 | `lab04_timed.md` | 04 claude-code-team-workflow | Available |
+| `lab05_timed.md` | 05 structured-output-reliability | Available |
 
-Sets for labs 05 and 06 arrive when those labs are built.
+The set for lab 06 arrives when that lab is built.
 
 ## Pooled set
 
