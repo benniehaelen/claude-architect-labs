@@ -107,6 +107,13 @@ sees it. The lab designs a policy that covers every must-escalate case, escalate
 routes to a human queue, and holds when the handoff cannot be delivered. Run with
 `python labs/07-human-escalation-patterns/solution/run.py`.
 
+Lab 08, agent permissions and sandboxing (Claude Code Configuration and Workflows). An unattended CI
+agent bypasses permissions, runs with no sandbox, and works in the shared checkout, so a dangerous
+command runs, a build subprocess exfiltrates a credential, and edits cannot be reverted. The lab scopes
+permissions least to most, enables the OS-level Bash sandbox, and isolates file state in a worktree, and
+shows that a tight permission rule does not contain a subprocess. Run with
+`python labs/08-agent-permissions-sandboxing/solution/run.py`.
+
 ## House style and self-enforcement
 
 This repository practices what it teaches. The writing rules live in `.claude/rules/house-style.md`
@@ -134,9 +141,10 @@ Built (v0.1):
 
 Built (v0.2):
 - Lab 07: human-escalation-patterns
+- Lab 08: agent-permissions-sandboxing
 
 Every built lab includes a flawed version, a reference solution, a dry-run execution path, a decision
 record, a failure-mode catalog, an exam-angle note, a question set, an eval, and a timed practice
-set. They pass their evals (`python shared/evals/check_lab01.py` through `check_lab07.py`). The
-remaining v0.2 and v1.0 additions (agent permissions and sandboxing, and the capstones) are described
-in `SPEC.md`.
+set. They pass their evals (`python shared/evals/check_lab01.py` through `check_lab08.py`). The
+remaining v0.2 and v1.0 additions (the citations-versus-structured-output deep dive and the capstones)
+are described in `SPEC.md`.
